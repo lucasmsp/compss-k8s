@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project>
+	<MasterNode />
+	<Cloud>
+		<InitialVMs>1</InitialVMs>
+		<MinimumVMs>3</MinimumVMs>
+		<MaximumVMs>3</MaximumVMs>
+
+		<CloudProvider Name="KubernetesCluster">
+			<LimitOfVMs>8</LimitOfVMs>
+			<Properties>
+
+				<Property>
+					<Name>k8s-application-timeout</Name>
+					<Value>180000</Value>
+				</Property>
+
+                <Property>
+					<Name>k8s-application-name</Name>
+					<Value>compss-k8s</Value>
+				</Property>
+
+                <Property>
+					<Name>k8s-namespace</Name>
+					<Value>default</Value>
+				</Property>
+
+
+				<!-- Abstract SSH Connector parameters -->
+
+				<Property>
+					<Name>vm-user</Name>
+					<Value>root</Value>
+				</Property>
+
+				<Property>
+					<Name>vm-keypair-name</Name>
+					<Value>id_rsa</Value>
+				</Property>
+
+				<Property>
+					<Name>vm-keypair-location</Name>
+					<Value>~/.ssh</Value>
+				</Property>
+
+			</Properties>
+			<Images>
+
+                 <Image Name="localhost:32000/lucasmsp/compss:local">
+					<InstallDir>/opt/COMPSs/</InstallDir>
+					<WorkingDir>/tmp/</WorkingDir>
+					<User>root</User>
+
+					<Application>
+						<AppDir>/tmp/</AppDir>
+					</Application>
+
+					<Package>
+						<Source>/tmp/test.tar.gz</Source>
+						<Target>/tmp/</Target>
+					</Package>
+				</Image>
+			</Images>
+			<InstanceTypes>
+				<InstanceType Name="small" />
+			</InstanceTypes>
+		</CloudProvider>
+	</Cloud>
+</Project>
