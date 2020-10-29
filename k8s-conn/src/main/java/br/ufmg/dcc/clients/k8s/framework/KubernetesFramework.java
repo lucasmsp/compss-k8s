@@ -83,7 +83,6 @@ public class KubernetesFramework {
      * @throws FrameworkException
      */
     public KubernetesFramework(Map<String, String> props) throws FrameworkException {
-        LOGGER.info("Starting K8s Connector");
 
         if (props.containsKey(SERVER_IP)){
             masterIp = props.get(SERVER_IP);
@@ -111,14 +110,16 @@ public class KubernetesFramework {
         try {
             this.masterHostname = InetAddress.getLocalHost().getHostName();
         } catch (UnknownHostException e) {
-            throw new FrameworkException("We could not determine the hostname address");
+            LOGGER.error("ERROR - We could not determine the hostname address.");
+            throw new FrameworkException(e.getMessage());
         }
 
         ApiClient client = null;
         try {
             client = Config.defaultClient();
         } catch (IOException | Error e) {
-            throw new FrameworkException("We could not find the kubernetes server.");
+            LOGGER.error("ERROR - We could not find the kubernetes server.");
+            throw new FrameworkException(e.getMessage());
         }
 
         Configuration.setDefaultApiClient(client);
@@ -129,7 +130,8 @@ public class KubernetesFramework {
             list = api.listNamespacedPod(namespace,null, null, null,
                     null, null, null, null, null, null);
         } catch (ApiException e) {
-            throw new FrameworkException("We could not find the namespace "+namespace);
+            LOGGER.error("ERROR - We could not find the namespace "+namespace);
+            throw new FrameworkException(e.getMessage());
         }
         String pods_list = "";
         for (V1Pod item : list.getItems()) {

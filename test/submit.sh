@@ -10,10 +10,8 @@ cp ../k8s-conn/target/k8s-conn.jar /opt/COMPSs/Runtime/cloud-conn/
 chmod 755 /opt/COMPSs/Runtime/cloud-conn/k8s-conn.jar
 
 runcompss  --summary -d  --lang=python\
-		 --project=./test_p_k8s.xml\
-		 --resources=./test_r_k8s.xml\
-	     --python_interpreter=python3\
-         --pythonpath=/tmp/\
-		 test.py 12 3 10
-
-
+           --project=./test_p_k8s.xml\
+           --resources=./test_r_k8s.xml\
+           --python_interpreter=python3\
+           --pythonpath=/tmp/\
+           test.py 12 3 10
