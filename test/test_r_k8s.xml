@@ -9,7 +9,7 @@
 		</Endpoint>
 
 		<Images>
-			<Image Name="localhost:32000/lucasmsp/compss:local">
+			<Image Name="compss/compss:2.8">
 				<CreationTime>1800</CreationTime>
 				<Adaptors>
 					<Adaptor Name="es.bsc.compss.nio.master.NIOAdaptor">

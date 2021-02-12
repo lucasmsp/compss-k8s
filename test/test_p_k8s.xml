@@ -46,7 +46,7 @@
 			</Properties>
 			<Images>
 
-                 <Image Name="localhost:32000/lucasmsp/compss:local">
+                 <Image Name="compss/compss:2.8">
 					<InstallDir>/opt/COMPSs/</InstallDir>
 					<WorkingDir>/tmp/</WorkingDir>
 					<User>root</User>
