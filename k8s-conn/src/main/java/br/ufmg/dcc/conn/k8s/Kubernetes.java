@@ -50,13 +50,12 @@ public class Kubernetes extends Connector {
      */
     public Kubernetes(Map<String, String> props) throws ConnException {
         super(props);
-        logger.info("Starting K8s Connector");
+        logger.info("Initializing K8s Connector");
         resources = new HashMap<>();
         try {
             this.framework = new KubernetesFramework(props);
 
         } catch (FrameworkException e) {
-            System.out.println(e.getMessage());
             throw new ConnException(e);
         }
 
